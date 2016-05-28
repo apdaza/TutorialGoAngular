@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="libs/angular.min.js"></script>
+	<!--Controllers-->
+	<script type="text/javascript" src="controllers/testController.js"></script>
+	<!--Services-->
+	<script type="text/javascript" src="services/testService.js"></script>
+</head>
+<body ng-app='myApp' ng-controller="testController">
+	<header class="jumbotron">
+		<h1>My App Users</h1>
+	</header>
+	<section ng-controller="getAllUsers" class="container-fluid">
+		<section ng-if="users.exist==1" class="col-sm-3 well">
+			<h3>User List</h3>
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-repeat="p in users">
+					<a href="" ng-click="selectId(p.id)">
+						{{p.id + " " + p.firstname + " " + p.lastname}}
+					</a>
+				</li>
+			</ul>
+		</section>
+		<section ng-if="user.exist==1" class="col-sm-6">
+			<h3> User # {{user.id}}</h3>
+			<form>
+				First Name: <input type="text" ng-model="user.firstname"> <br>
+				Last Name: <input type="text" ng-model="user.lastname"> <br>
+				<pre>form = {{user | json}}</pre>
+			</form>
+			<hr/>
+		</section>
+		<section ng-if="user.exist!=1" class="col-sm-6">
+			<h3> New User </h3>
+			<form>
+				First Name: <input type="text" ng-model="user.firstname"> <br>
+				Last Name: <input type="text" ng-model="user.lastname"> <br>
+				<pre>form = {{user | json}}</pre>
+				<button class="btn btn-primary pull-right" ng-click="add()">
+					<i class="fa fa-plus"></i> Add New User
+				</button>
+			</form>
+			<hr/>
+		</section>
+		<div class="col-sm-3">
+				<button class="btn btn-primary form-control" ng-click="editUser()">
+					<i class="fa fa-trash-o"></i> Update this user
+				</button>
+				<button class="btn btn-danger form-control" ng-click="deleteUser()">
+					<i class="fa fa-trash-o"></i> Remove this user
+				</button>
+			</div>
+	</section>
+
+
+</body>
+</html>
