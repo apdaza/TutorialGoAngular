@@ -1,1 +1,5 @@
 Tutorial Go Angular
+
+goserver: contiene el archivo main.go que sirve un api rest para gestionar nombres de usuarios
+
+angularclient: contiene el cliente escrito usando angularjs, se sugiere desplegarlo en apache
